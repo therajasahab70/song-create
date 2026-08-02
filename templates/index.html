@@ -3,31 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Voice Cloner</title>
+    <title> Rahul panchal vocals lyrics changer</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 50px; text-align: center; }
-        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
-        input, textarea, button { width: 100%; margin-top: 15px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box; }
-        button { background-color: #28a745; color: white; border: none; cursor: pointer; font-size: 16px; font-weight: bold; }
-        button:hover { background-color: #218838; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1e1e2f; color: #fff; padding: 40px; text-align: center; }
+        .box { background: #2a2a40; padding: 30px; border-radius: 12px; max-width: 500px; margin: auto; box-shadow: 0px 4px 15px rgba(0,0,0,0.5); }
+        input, textarea, select { width: 100%; margin: 10px 0; padding: 12px; border-radius: 6px; border: none; box-sizing: border-box; background: #3b3b55; color: white; }
+        button { background: #ff4757; color: white; border: none; padding: 15px; width: 100%; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; margin-top: 10px; }
+        button:hover { background: #ff6b81; }
+        .loading { display: none; margin-top: 15px; color: #2ed573; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>🎤 AI Voice Cloner</h2>
-    <p>Apni aawaz upload karein aur naya text likhein!</p>
-    
-    <form action="/clone" method="POST" enctype="multipart/form-data">
-        <label for="audio">1. Original Vocal Upload Karein (MP3/WAV):</label>
-        <input type="file" name="audio" id="audio" accept="audio/*" required>
+    <div class="box">
+        <h2>🎙️ Vocals Line Changer</h2>
+        <p>Bina kisi API ke original aawaz mein text convert karein</p>
         
-        <label for="text">2. Nayi Line Likhein:</label>
-        <textarea name="text" id="text" rows="4" placeholder="Wo text likhein jo aap is aawaz se bulwana chahte hain..." required></textarea>
-        
-        <button type="submit">Generte Audio</button>
-    </form>
-</div>
+        <form id="voiceForm" method="POST" enctype="multipart/form-data">
+            <label style="text-align: left; display: block;">1. Upload Clean Vocals (.wav format):</label>
+            <input type="file" name="audio_file" accept=".wav" required>
+            
+            <label style="text-align: left; display: block;">2. Nayi Line Likhein:</label>
+            <textarea name="text" rows="4" placeholder="Wo likhein jo is aawaz me bulwana hai..." required></textarea>
+            
+            <label style="text-align: left; display: block;">3. Language:</label>
+            <select name="language">
+                <option value="hi">Hindi</option>
+                <option value="en">English</option>
+            </select>
+            
+            <button type="submit" id="submitBtn">Generate Vocals</button>
+            <p class="loading" id="loadingText">Processing chal rahi hai, kripya wait karein... ⏳</p>
+        </form>
+    </div>
 
+    <script>
+        document.getElementById('voiceForm').onsubmit = function() {
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('loadingText').style.display = 'block';
+        };
+    </script>
 </body>
 </html>
