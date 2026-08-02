@@ -1,8 +1,8 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.3.1+cpu
-torchaudio==2.3.1+cpu
+​torch==2.3.1
+torchaudio==2.3.1
 Flask==3.0.0
 gunicorn==21.2.0
 TTS==0.22.0
 Werkzeug==3.0.1
-scipy
+scipy==1.13.0'
